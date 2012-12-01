@@ -1,0 +1,37 @@
+<div id="sidebar">
+  <h3>Where to start</h3>
+
+  <p class="description">
+    This application is meant to be used by designers who want to add metafields to products quickly and painlessly. You must understand <%= link_to 'what metafields are', 'http://blog.shopify.com/2009/12/14/new-feature-metafields' %>, and <%= link_to 'how you can use them', 'http://forums.shopify.com/categories/1/posts/32956#comment-32964' %> in your Liquid templates. This application provides no layer of abstraction.
+  </p>
+  
+</div>
+
+<% if @product.nil? %>
+
+<p><em class="note">You called on this app without having specified a product ID. Go back to your <%= link_to 'shop admin', 'http://' + current_shop.url + '/admin/products' %> and browse to the Details page of the product you wish to edit metafields for.</em></p>
+
+<% else %>
+
+<h2>You want to <%= link_to 'edit', '/metafields' %> the metafields for this product:</h2>
+
+
+<div class="product box">
+  <div class="wrapper">
+    <%= image_tag @product.images.first.medium rescue '' %>
+
+    <h4><%= link_to @product.title, "http://#{current_shop.url}/admin/products/#{@product.id}" %></h4>
+
+    <p class="price"><%= @product.price_range %> <%= current_shop.shop.currency %></p>
+    <p style="margin-bottom: 0"><%= @product.product_type %> <span class="note">type</span></p>
+    <p style="margin: 0"><%= @product.vendor %> <span class="note">vendor</span></p>
+  
+    <div style="clear:left"></div>
+  </div>
+</div>
+  
+<h3>Let me <%= link_to 'edit', 'http://' + current_shop.url + '/admin/products' %> the metafields of another product.</h3>
+
+<% end %>
+
+

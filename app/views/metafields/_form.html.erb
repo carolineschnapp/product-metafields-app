@@ -1,0 +1,30 @@
+<% if controller.action_name == 'new' %>
+<% submit_url = '/' + controller_name %>
+<% elsif controller.action_name == 'edit' %>
+<% submit_url = '/' + controller_name + "/#{@metafield.id}" %>
+<% end %>
+
+<% form_for @metafield, :url => submit_url do |f| %>
+
+  <p>
+    <%= f.label :namespace %><br />
+    <%= f.text_field :namespace %>
+  </p>
+  <p>
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :value_type %><br />
+    <%= f.select :value_type, [ 'string', 'integer'] %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

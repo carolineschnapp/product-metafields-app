@@ -1,0 +1,17 @@
+one:
+  namespace: MyString
+  key: MyString
+  value: MyString
+  value_type: MyString
+  description: MyString
+  product_id: 1
+  id_id: 1
+
+two:
+  namespace: MyString
+  key: MyString
+  value: MyString
+  value_type: MyString
+  description: MyString
+  product_id: 1
+  id_id: 1

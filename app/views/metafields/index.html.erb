@@ -1,0 +1,29 @@
+<% title "Metafields" %>
+
+<%- unless session[:product_id].blank? -%>
+
+<table class="data sortable" cellspacing="0" cellpadding="0">
+  <tr>
+    <th class="text sortfirstasc" style="width:13%">Namespace</th>
+    <th class="text" style="width:13%">Key</th>
+    <th class="text" style="width:13%">Value</th>
+    <th class="nosort" style="width:13%">Type</th>
+    <th class="nosort" style="width:35%">Description</th>
+    <th class="nosort">Edit Operations</th>
+  </tr>
+  <% for metafield in @metafields %>
+    <tr>
+      <td><%=h metafield.namespace %></td>
+      <td><%=h metafield.key %></td>
+      <td><%=h metafield.value %></td>
+      <td><%=h metafield.value_type %></td>
+      <td><% if metafield.description.blank? %><em class="blank">Empty</em><% else %><%=h metafield.description %><% end %></td>
+      <td><%= link_to 'Edit', "metafields/#{metafield.id}/edit" %>
+      <%= link_to 'Delete', "metafields/#{metafield.id}", :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to 'Add a Metafield', 'metafields/new' %></p>
+
+<%- end -%>
